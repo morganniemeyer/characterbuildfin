@@ -35,6 +35,7 @@ pantsSelect.addEventListener('change', () => {
     // > set the character head from the value of the head <select>
     character.pants = pantsSelect.value;
     // > redisplay the character
+    displayCharacter();
 });
 
 function displayCharacter() {
@@ -50,15 +51,21 @@ function displayPhrases() {
 
     for (const phrase of character.phrases) {
         // > create an <li> element
+        const li = document.createElement('li');
         // > set the text of the li to the phrase
+        li.textContent = phrase;
         // > append the <li> to the phrases list
+        phraseList.append(li);
     }
 }
 
 addButton.addEventListener('click', () => {
     // > Get the phrase from the value of the phrase input
+    const phrase = phraseInput.value;
     // > Use ".push" to add the phrase to the end of the character phrases array
+    character.phrases.push(phrase);
     // > Re-display the phrases
+    displayPhrases();
 
     // reset the input
     phraseInput.value = '';
